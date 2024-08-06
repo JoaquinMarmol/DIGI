@@ -215,6 +215,7 @@ the website, in dark theme
   align-items: center;
   column-gap: .5rem;
   transition: .3s;
+  font-size: 1.25rem;
 }
 
 .nav__logo-icon{
@@ -1104,4 +1105,86 @@ the website, in dark theme
   .scrollup{
     right: 3rem;
   }
+  .section-employees {
+    background-color: var(--container-color);
+    padding: 60px 0;
+}
+
+.section__title-center {
+    text-align: center;
+    color: var(--title-color);
+    margin-bottom: 40px;
+}
+
+.employee-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 968px;
+    margin: 0 auto;
+}
+
+.employee-card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.employee-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+}
+
+.employee-name {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+.employee-position {
+    font-size: 1rem;
+    color: var(--text-secondary-color);
+}
+.section.about-us {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-us__container {
+  display: flex;
+  flex-direction: row-reverse; /* Esto hará que la imagen aparezca a la derecha */
+  align-items: center;
+}
+
+.about-us__data {
+  flex: 1;
+  margin-right: 2rem; /* Ajusta este margen según sea necesario */
+}
+
+.about-us__img {
+  flex: 1;
+}
+
+.about-us__img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Ajusta el estilo según sea necesario */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajusta el estilo según sea necesario */
+}
+
+@media screen and (max-width: 768px) {
+  .about-us__container {
+    flex-direction: column;
+  }
+  
+  .about-us__data {
+    margin: 0 0 2rem 0;
+  }
+}
 }
