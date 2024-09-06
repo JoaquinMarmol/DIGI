@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const items = document.querySelectorAll('.carousel-item');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
+    let startX = 0;
+    let isDragging = false;
 
     function showSlide(index) {
         items.forEach((item, i) => {
@@ -61,5 +63,49 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.addEventListener('click', function() {
             showSlide(i);
         });
+    });
+
+    // Funcionalidad de deslizar
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mousedown', (e) => {
+        startX = e.pageX - carousel.offsetLeft;
+        isDragging = true;
+        carousel.style.cursor = 'grabbing';
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mouseup', () => {
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2; // Ajusta la velocidad de desplazamiento aquí
+        carousel.scrollLeft -= walk;
+        startX = x;
+    });
+
+    // Agregar soporte para dispositivos táctiles
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX - carousel.offsetLeft;
+        isDragging = true;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2; // Ajusta la velocidad de desplazamiento aquí
+        carousel.scrollLeft -= walk;
+        startX = x;
     });
 });
