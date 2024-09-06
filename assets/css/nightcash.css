@@ -545,3 +545,56 @@ body {
   transition: .3s;
   border: white 1px solid;  
 }
+
+.contenedor-carrusel {
+  position: relative;
+  max-width: 60%;
+  margin: auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor-carrusel {
+    max-width: 100%;
+  }
+}
+
+.carrusel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.elemento-carrusel {
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.elemento-carrusel img {
+  width: 100%;
+  height: auto;
+}
+
+.btn-anterior, .btn-siguiente {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-anterior {
+  left: 10px;
+}
+
+.btn-siguiente {
+  right: 10px;
+}
+
+.btn-anterior:hover, .btn-siguiente:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

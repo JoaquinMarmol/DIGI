@@ -169,20 +169,24 @@
         </p>
         
         <h3>Con esto podrías:</h3>
-        <div class="example-container">
-            <div class="example-item">
-                <h4>Comprar un departamento en Palermo</h4>
-                <img src="./assets/img/departamento.jpeg" alt="Departamento en Palermo">
+        <div class="contenedor-carrusel">
+            <div class="carrusel">
+                <div class="elemento-carrusel">
+                    <h4>Comprar un departamento en Palermo</h4>
+                    <img src="./assets/img/departamento.jpeg" alt="Departamento en Palermo">
+                </div>
+                <div class="elemento-carrusel">
+                    <h4>Comprar un BMW 0KM</h4>
+                    <img src="./assets/img/auto.jpeg" alt="BMW 0KM">
+                </div>
+                <div class="elemento-carrusel">
+                    <h4>Ir 15 veces por año a Europa</h4>
+                    <img src="./assets/img/viaje.jpeg" alt="Viaje a Europa">
+                </div>
             </div>
-            <div class="example-item">
-                <h4>Comprar un BMW 0KM</h4>
-                <img src="./assets/img/auto.jpeg" alt="BMW 0KM">
-            </div>
-            <div class="example-item">
-                <h4>Ir 15 veces por año a Europa</h4>
-                <img src="./assets/img/viaje.jpeg" alt="Viaje a Europa">
-            </div>
-        </div>
+            <button class="btn-anterior" onclick="moverCarrusel(-1)">&#10094;</button>
+            <button class="btn-siguiente" onclick="moverCarrusel(1)">&#10095;</button>
+        </div>              
     </section>  
 
     <section id="contact" class="contact-content">
