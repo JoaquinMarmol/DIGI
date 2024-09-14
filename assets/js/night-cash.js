@@ -32,80 +32,102 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(section);
     });
 
-    // Carrusel
-    const items = document.querySelectorAll('.carousel-item');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    let startX = 0;
-    let isDragging = false;
-
-    function showSlide(index) {
-        items.forEach((item, i) => {
-            item.classList.toggle('active', i === index);
-            dots[i].classList.toggle('active', i === index);
+    // Animaciones de características
+    const features = document.querySelectorAll('.feat');
+    const featureObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const index = Array.from(features).indexOf(entry.target);
+                if (index < 3) {
+                    entry.target.classList.add('feature-slide-left');
+                } else {
+                    entry.target.classList.add('feature-slide-right');
+                }
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
         });
-        currentIndex = index;
+    }, { threshold: 0.1 });
+
+    features.forEach(feature => {
+        featureObserver.observe(feature);
+    });
+
+    // Función para inicializar el carrusel
+    function initializeCarousel(carouselId, intervalTime = 3000) {
+        const carouselContainer = document.querySelector(`#${carouselId} .carousel-container`);
+        if (!carouselContainer) return; // Verificación para evitar errores si el carrusel no existe
+
+        const prevButton = document.querySelector(`#${carouselId} .prev`);
+        const nextButton = document.querySelector(`#${carouselId} .next`);
+        const dots = document.querySelectorAll(`#${carouselId} .dot`);
+
+        let currentIndex = 0;
+        const items = carouselContainer.querySelectorAll('.carousel-item');
+        let interval;
+
+        function showSlide(index) {
+            const totalItems = items.length;
+            currentIndex = (index + totalItems) % totalItems; // Asegurar que el índice esté en el rango
+            const offset = -currentIndex * 100; // Mueve el carrusel en porcentaje
+            carouselContainer.style.transform = `translateX(${offset}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function startAutoSlide() {
+            return setInterval(() => {
+                nextSlide();
+            }, intervalTime);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(interval);
+        }
+
+        // Iniciar el carrusel
+        showSlide(currentIndex);
+
+        // Eventos para los botones de control
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+                stopAutoSlide();
+                interval = startAutoSlide();
+            });
+
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+                stopAutoSlide();
+                interval = startAutoSlide();
+            });
+        }
+
+        // Eventos para los puntos de navegación
+        if (dots) {
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    stopAutoSlide();
+                    interval = startAutoSlide();
+                });
+            });
+        }
+
+        // Iniciar el cambio automático
+        interval = startAutoSlide();
     }
 
-    // Flechas
-    document.querySelector('.prev').addEventListener('click', function() {
-        const newIndex = (currentIndex - 1 + items.length) % items.length;
-        showSlide(newIndex);
-    });
-
-    document.querySelector('.next').addEventListener('click', function() {
-        const newIndex = (currentIndex + 1) % items.length;
-        showSlide(newIndex);
-    });
-
-    // Puntos
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', function() {
-            showSlide(i);
-        });
-    });
-
-    // Funcionalidad de deslizar
-    const carousel = document.querySelector('.carousel');
-    carousel.addEventListener('mousedown', (e) => {
-        startX = e.pageX - carousel.offsetLeft;
-        isDragging = true;
-        carousel.style.cursor = 'grabbing';
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-        isDragging = false;
-        carousel.style.cursor = 'grab';
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        isDragging = false;
-        carousel.style.cursor = 'grab';
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2; // Ajusta la velocidad de desplazamiento aquí
-        carousel.scrollLeft -= walk;
-        startX = x;
-    });
-
-    // Agregar soporte para dispositivos táctiles
-    carousel.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].pageX - carousel.offsetLeft;
-        isDragging = true;
-    });
-
-    carousel.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const x = e.touches[0].pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2; // Ajusta la velocidad de desplazamiento aquí
-        carousel.scrollLeft -= walk;
-        startX = x;
-    });
+    // Inicializar los carruseles con diferentes IDs
+    initializeCarousel('carousel1', 5000);
+    initializeCarousel('carousel2', 5000);
 });
