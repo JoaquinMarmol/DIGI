@@ -13,7 +13,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 40px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   z-index: 1000;
@@ -24,7 +24,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
   background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(10px);
   border: 1px solid #333; /* Borde gris oscuro */
@@ -329,7 +328,7 @@ header {
 }
 
 /* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   .features {
     flex-direction: column; /* Coloca los elementos en una columna en pantallas pequeñas */
     align-items: center; /* Centra los elementos horizontalmente */
@@ -372,7 +371,7 @@ header {
 }
 
 /* Estilos Responsivos */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   .menu {
     display: none;
     flex-direction: column;
@@ -684,7 +683,7 @@ header {
     background-color: #333;
 }
 /* Estilos responsivos para dispositivos móviles */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   /* Ajusta la barra de navegación para dispositivos móviles */
   .header {
     width: 100%; /* Asegura que ocupe el 100% del ancho del contenedor */
@@ -830,7 +829,7 @@ header {
   height: 100%; /* Altura del widget */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   /* Ajustes para el menú de navegación en móviles */
   .menu {
     display: none;
@@ -849,7 +848,7 @@ header {
   }
 
 /* Estilos para la barra de navegación en dispositivos móviles */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   /* Estilo general del header */
   .header {
     display: flex;
@@ -999,7 +998,7 @@ header {
 }
 
 /* Media query para dispositivos móviles */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   .container {
     padding: 0 10px; /* Menos padding en móviles */
     
@@ -1175,4 +1174,7 @@ header {
 }
 }
 
-
+.footer {
+    display: flex;
+    justify-content: center;
+}
