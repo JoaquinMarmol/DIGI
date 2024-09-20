@@ -1002,148 +1002,67 @@ header {
     justify-content: center;
 }
 
-.carrousel {
+.carousel {
   width: 90%;
   max-width: 1200px;
-  padding: 2em;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  margin: 50px auto; /* Centrar el carrusel */
   overflow: hidden;
-  margin-top: 50px;
+  border-radius: 1em;
+  box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
 }
 
-.carrousel .grande {
-  width: 300%;
+.carrousel, .carrousel2 {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
-  padding: 2em;
-  transition: all 0.5s ease;
-  transform: translateX(0%);
+  flex-direction: column;
+  align-items: center; /* Centrar contenido */
 }
 
-.carrousel .img {
-  width: 100%;
-  min-height: 10vh;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
-}
-
-.carrousel .puntos {
-  width: 100%;
-  margin: 1em 0 0;
-  padding: 0.4em;
+.grande, .grande2 {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+  transition: opacity 0.4s ease;
 }
 
-.carrousel .punto {
-  width: 1em;
-  height: 1em;
-  margin: 1em 1em 0;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: white;
-  box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+.grande .img, .grande2 .img {
+  width: 100%; /* Ajustar al 100% */
+  min-height: 30vh; /* Altura mínima */
+  object-fit: cover; /* Mantiene proporción */
+  display: none; /* Ocultar imágenes inicialmente */
 }
 
-.carrousel .punto.activo {
-  background-color: lightblue;
+.grande .img.active, .grande2 .img.active {
+  display: block; /* Solo muestra la imagen activa */
 }
 
-.carousel {
-  width: 100%;
+.puntos, .puntos2 {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-li {
+  margin-top: 1em;
+  padding: 0;
   list-style: none;
 }
 
-.carrousel2 {
-  width: 90%;
-  max-width: 1200px;
-  padding: 2em;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
-  overflow: hidden;
-  margin-top: 50px;
-}
-
-.carrousel2 .grande2 {
-  width: 300%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
-  padding: 2em;
-  transition: all 0.5s ease;
-  transform: translateX(0%);
-}
-
-.carrousel2 .img {
-  width: 100%;
-  min-height: 10vh;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
-}
-
-.carrousel2 .puntos2 {
-  width: 100%;
-  margin: 1em 0 0;
-  padding: 0.4em;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.carrousel2 .punto2 {
+.punto, .punto2 {
   width: 1em;
   height: 1em;
-  margin: 1em 1em 0;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
+  margin: 0 0.5em;
   background-color: white;
-  box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.carrousel2 .punto2.activo {
+.punto.active, .punto2.active {
   background-color: lightblue;
 }
 
-.carousel2 {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+  .grande .img, .grande2 .img {
+      min-height: 20vh; /* Ajustar la altura mínima para pantallas pequeñas */
+  }
+
+  .punto, .punto2 {
+      width: 0.8em; /* Hacer los puntos un poco más pequeños */
+      height: 0.8em;
+  }
 }
