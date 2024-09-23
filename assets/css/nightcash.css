@@ -132,6 +132,16 @@ header {
 .vcl {
   flex: 1;
   margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.video {
+  height: 500px;
+
+  @media (max-width: 768px){
+    height: 300px;
+  }
 }
 
 .vslnightcash {
