@@ -588,8 +588,8 @@ header {
 @media (max-width: 768px) {
   /* Ajusta los márgenes para la sección de desarrollo */
   .desarrollo {
-    padding: 20px; /* Añade espaciado interno para mejorar la separación */
-    margin: 20px auto; /* Añade márgenes superior e inferior para separar la sección de otros elementos */
+    padding: 0px 10px; /* Añade espaciado interno para mejorar la separación */
+    margin: 0px auto; /* Añade márgenes superior e inferior para separar la sección de otros elementos */
   }
 
   /* Ajusta el margen del contenedor de texto */
@@ -776,12 +776,6 @@ header {
   .banner {
     width: 100%;
     height: auto; /* Ajusta la altura del banner en móviles */
-  }
-
-  /* Ajustes para la sección de desarrollo en móviles */
-  .desarrollo {
-    padding: 20px;
-    margin: 20px auto;
   }
 
   .desarrollo .titulo-container {
@@ -1019,6 +1013,11 @@ header {
   overflow: hidden;
   border-radius: 1em;
   box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0px;
+  }
 }
 
 .carrousel, .carrousel2 {
