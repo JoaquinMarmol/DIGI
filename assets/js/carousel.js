@@ -1,62 +1,71 @@
-'use strict'
+'use strict';
 
-const grande    = document.querySelector('.grande')
-const punto     = document.querySelectorAll('.punto')
-const grande2    = document.querySelector('.grande2')
-const punto2     = document.querySelectorAll('.punto2')
+// Función para el carrusel 1
+const images1 = document.querySelectorAll('.grande .img');
+const dots1 = document.querySelectorAll('.puntos .punto');
+let currentIndex1 = 0;
 
+function updateCarousel1(index) {
+    images1.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) {
+            img.classList.add('active');
+        }
+    });
 
-// Cuando CLICK en punto
-    // Saber la posición de ese punto
-    // Aplicar un transform translateX al grande
-    // QUITAR la clase activo de TODOS puntos
-    // AÑADIR la clase activo al punto que hemos hecho CLICK
+    dots1.forEach((dot, i) => {
+        dot.classList.remove('active');
+        if (i === index) {
+            dot.classList.add('active');
+        }
+    });
+}
 
-// Recorrer TODOS los punto
-punto.forEach( ( cadaPunto , i )=> {
-    // Asignamos un CLICK a cadaPunto
-    punto[i].addEventListener('click',()=>{
+dots1.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+        currentIndex1 = i;
+        updateCarousel1(currentIndex1);
+    });
+});
 
-        // Guardar la posición de ese PUNTO
-        let posicion  = i
-        // Calculando el espacio que debe DESPLAZARSE el GRANDE
-        let operacion = posicion * -33.33;
+setInterval(() => {
+    currentIndex1 = (currentIndex1 + 1) % images1.length;
+    updateCarousel1(currentIndex1);
+}, 7000);
 
-        // MOVEMOS el grand
-        grande.style.transform = `translateX(${ operacion }%)`
+updateCarousel1(currentIndex1);
 
-        // Recorremos TODOS los punto
-        punto.forEach( ( cadaPunto , i )=>{
-            // Quitamos la clase ACTIVO a TODOS los punto
-            punto[i].classList.remove('activo')
-        })
-        // Añadir la clase activo en el punto que hemos hecho CLICK
-        punto[i].classList.add('activo')
+// Función para el carrusel 2
+const images2 = document.querySelectorAll('.grande2 .img');
+const dots2 = document.querySelectorAll('.puntos2 .punto2');
+let currentIndex2 = 0;
 
-    })
-})
+function updateCarousel2(index) {
+    images2.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) {
+            img.classList.add('active');
+        }
+    });
 
-punto2.forEach( ( cadaPunto2 , i )=> {
-  // Asignamos un CLICK a cadaPunto
-  punto2[i].addEventListener('click',()=>{
+    dots2.forEach((dot, i) => {
+        dot.classList.remove('active');
+        if (i === index) {
+            dot.classList.add('active');
+        }
+    });
+}
 
-      // Guardar la posición de ese PUNTO
-      let posicion  = i
-      // Calculando el espacio que debe DESPLAZARSE el GRANDE
-      let operacion = posicion * -33.33;
+dots2.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+        currentIndex2 = i;
+        updateCarousel2(currentIndex2);
+    });
+});
 
-      // MOVEMOS el grand
-      grande2.style.transform = `translateX(${ operacion }%)`
+setInterval(() => {
+    currentIndex2 = (currentIndex2 + 1) % images2.length;
+    updateCarousel2(currentIndex2);
+}, 7000);
 
-      // Recorremos TODOS los punto
-      punto2.forEach( ( cadaPunto2 , i )=>{
-          // Quitamos la clase ACTIVO a TODOS los punto
-          punto2[i].classList.remove('activo')
-      })
-      // Añadir la clase activo en el punto que hemos hecho CLICK
-      punto2[i].classList.add('activo')
-
-  })
-})
-
-
+updateCarousel2(currentIndex2);
